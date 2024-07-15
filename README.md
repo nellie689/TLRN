@@ -33,8 +33,6 @@ The main dependencies are listed below, the other packages can be easily install
 
 Below is a *QuickStart* guide on how to use TLRN for network training and testing.
 
-========================= Training and Testing ========================
-
 If you want to train you own model, please run:  
 bash TLRN/run.sh, with the parameter "mode" set as "train" in the bash script.
 

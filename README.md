@@ -19,7 +19,7 @@ Nian Wu, Jiarui Xing, and Miaomiao Zhang. International Conference on Medical Im
 
 ************************** Setup ************************** 
 
-The main dependencies are listed below, the other packages are easy to install with "pip install" according to the hints when you run the code.
+The main dependencies are listed below, the other packages can be easily installed with "pip install" according to the hints when running the code.
 
 * python=3.10
 * pytorch=2.0.0

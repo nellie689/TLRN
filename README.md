@@ -23,6 +23,7 @@ The main dependencies are listed below, the other packages can be easily install
 
 * python=3.10
 * pytorch=2.0.0
+* cuda11.8
 * matplotlib
 * numpy
 * SimpleITK

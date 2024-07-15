@@ -30,7 +30,7 @@ The main dependencies are listed below, the other packages are easy to install w
 
 ************************** Usage ************************** 
 
-Below is a *QuickStart* guide on how to use NeurEPDiff for network training and testing.
+Below is a *QuickStart* guide on how to use TLRN for network training and testing.
 
 ========================= Training and Testing ========================
 

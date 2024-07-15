@@ -41,6 +41,7 @@ If you want to test the model, please run:
 bash TLRN/run.sh, with the parameter "mode" set as "test" in the bash script.
 
 Required Input Data: time-series image.
+
 Tips: To facilitate running the code, have uploaded an exemplary testing data "lemniscate_example_series.mat" in the directory "TLRN/datasets". We also provide pretrained network weights for TLRN and Voxelmorph in directory "TLRN/datasets".
 
 

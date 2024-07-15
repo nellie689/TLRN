@@ -9,9 +9,9 @@ This code is only for research purpose and non-commercial use only, and we reque
 TLRN: Temporal Latent Residual Networks For Large Deformation Image Registration  
 Nian Wu, Jiarui Xing, and Miaomiao Zhang. International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI) 2024.
 
-@article{wu2023neurepdiff,  
-  title={NeurEPDiff: Neural Operators to Predict Geodesics in Deformation Spaces},  
-  author={Wu, Nian and Zhang, Miaomiao},  
+@article{.....,  
+  title={TLRN: Temporal Latent Residual Networks For Large Deformation Image Registration},  
+  author={Wu, Nian, Jiarui Xing and Zhang, Miaomiao},  
   journal={arXiv preprint arXiv:2303.07115},  
   year={2023}  
 }  

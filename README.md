@@ -36,7 +36,7 @@ Below is a *QuickStart* guide on how to use TLRN for network training and testin
 If you want to train you own model, please run:  
 bash TLRN/run.sh, with the parameter "mode" set as "train" in the bash script.
 
-If you want to test the model, please run:
+If you want to test the model, please run:  
 bash TLRN/run.sh, with the parameter "mode" set as "test" in the bash script.
 
 Required Input Data: time-series image.

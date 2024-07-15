@@ -1,8 +1,5 @@
 #!/bin/bash
-# 设置要调用的 Python 脚本路径和文件名
 PYTHON_SCRIPT="Main.py"
-
-# 在这里设置传递给 Python 脚本的参数（可选）
 server="My"
 
 #mode can be 'train' or 'test', if you want to train the model, set it to 'train', if you want to test the model, set it to 'test'
@@ -23,6 +20,7 @@ max_epochs=20000
 #resmode: select to use which model, 'voxelmorph' or 'TLRN'
 #dataset: select to use which dataset, 'lemniscate' or 'cine_slice_img'
 #series_len: the length of the series
+#reslevel: the number of the resnet blocks in the model
 
 #Here are four examples you can run
 #example 1

@@ -35,12 +35,13 @@ Below is a *QuickStart* guide on how to use TLRN for network training and testin
 ========================= Training and Testing ========================
 
 If you want to train you own model, please run:  
-bash TLRN/run.sh, with the parameter "mode set as "train"
-or  
-bash TLRN/run.sh, with the parameter "mode set as "test" 
+bash TLRN/run.sh, with the parameter "mode" set as "train" in the bash script.
+
+If you want to test the model, please run:
+bash TLRN/run.sh, with the parameter "mode" set as "test" in the bash script.
 
 Required Input Data: time-series image.
-Tips: To facilitate running the code, have uploaded a exemplary testing data "lemniscate_example_series.mat" in the directory "TLRN/datasets".
+Tips: To facilitate running the code, have uploaded an exemplary testing data "lemniscate_example_series.mat" in the directory "TLRN/datasets". We also provide pretrained network weights for TLRN and Voxelmorph in directory "TLRN/datasets".
 
 
 

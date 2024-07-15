@@ -237,8 +237,9 @@ def trainer(args, model, snapshot_path):
         if lowest_loss_test1:
             loss_min_total = np.mean(test_loss['total_loss'])
             path_model_best_totalloss = save_model(model, args.snapshot_path, epoch_num, path_model_best_totalloss)
-        lowest_loss_test1 = np.mean(test_loss['similarity']) < loss_min_similarity
-        if lowest_loss_test1:
+        
+        lowest_loss_test2 = np.mean(test_loss['similarity']) < loss_min_similarity
+        if lowest_loss_test2:
             loss_min_similarity = np.mean(test_loss['similarity'])
             path_model_best_similarity = save_model(model, args.snapshot_path, epoch_num, path_model_best_similarity)
 

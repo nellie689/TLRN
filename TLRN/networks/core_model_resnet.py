@@ -256,10 +256,6 @@ class Net2DResNet(nn.Module):
         low_dim_features,x_his = self.exec_encoder(x)  #[b, 32, 8, 8]
         fnow_full_dim = self.exec_decoder(low_dim_features,x_his) #[b, 64, 64, 2]
         v = torch.permute(fnow_full_dim, [0, 3, 1, 2]) #[b, 64, 64, 2] -> [b, 2, 64, 64]
-        # print(v.shape)  #[11, 2, 128, 128]
-        # assert 4>7896
-        if "SM" in self.args.dataset:
-            v = self.blurred_sep(v)
 
         u, u_seq = self.MSvf(v) #u:[42, 2, 128, 128]
         
@@ -269,12 +265,6 @@ class Net2DResNet(nn.Module):
             Sdef_mask, _ = self.MSvf.transformer(self.src_mask, u, mode="nearest")
         else:
             Sdef_mask = None
-
-        # print(phiinv.shape)
-        # print(u_seq.shape)
-        # assert 4>888
-        # v = torch.cat((v, torch.zeros_like(v)[:,0:1,]),dim=1)  #[32, 2, 64, 64] -> [32, 3, 64, 64]
-        # return Sdef, v, u_seq, Sdef_mask
         
         u_inv, _ = self.MSvf(-v)
         _,phi = self.MSvf.transformer(self.src, u_inv)

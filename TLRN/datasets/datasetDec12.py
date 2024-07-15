@@ -34,7 +34,7 @@ class DENSE(Dataset):
         self.trainlenscale = trainlenscale
         
         data = scipy.io.loadmat(path)
-        data = data['data']   #(178, 9, 64, 64)   (795, 12, 64, 64)
+        data = data['data']  #(1400, 12, 64, 64)
         l,c,w,h = data.shape
 
         data = torch.from_numpy(data.astype(np.float32))  #(178, 9, 64, 64)
@@ -67,15 +67,13 @@ class DENSE(Dataset):
         self.len = self.__len__()
 
     def __len__(self):
-        return self.trainlen if self.split == "train" else min(self.testlen, self.test_data_len)
+        return self.trainlen if self.split == "train" else self.testlen
 
     def __getitem__(self, idx):
-        if self.resmode == "pair" or self.resmode == "pair-no-skip" or self.resmode == 'pair-skip':
-            indices = np.random.randint(self.train_data_len, size=1) if self.split == "train" else np.random.randint(self.test_data_len, size=1)+self.train_data_len
-        elif self.resmode != "pair" and self.split == "train":
-            indices = np.random.randint(self.train_data_len, size=1) if self.split == "train" else np.random.randint(self.test_data_len, size=1)+self.train_data_len
-        elif self.resmode != "pair" and self.split == "test":
-            indices = np.array([idx]) % self.test_data_len   +self.train_data_len
+        if self.split == "train":
+            indices = np.random.randint(self.train_data_len, size=1)
+        elif self.split == "test":
+            indices = np.array([idx]) % self.testlen
 
         slices = self.data[indices]
         if not(self.mask is None):

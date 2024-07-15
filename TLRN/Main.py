@@ -72,12 +72,7 @@ os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8'
 
 
 if __name__ == "__main__":
-    if args.server == "CS":
-        HOME = "/p/mmcardiac/nellie"
-    elif args.server == "Ri":
-        HOME = "/scratch/bsw3ac/nellie"
-    else:
-        HOME = "/home/nellie"
+    HOME = "WORK_ROOT_DIRECTORY"
     args.HOME = HOME
     
     cudnn.benchmark = True
@@ -92,32 +87,28 @@ if __name__ == "__main__":
 
     args.nb_features=[[16, 32, 32], [32, 32, 32, 32, 16, 16]]
 
+    #DATA PATH
     dataset_config = {
-        "lemniscate1200": HOME+ '/data/lemniscate2.mat' ,
-        "cine_slice_img": HOME+ '/data/cine_slice_img2_12slice_list.mat',
-        "cine_slice_mask": HOME+ '/data/cine_slice_myo_mask2_12slice_list.mat',
-        "reversed_cine_slice_img": HOME+ '/data/revserse_cine64_12slice.mat' ,
-        "reversed_cine_slice_mask": HOME+ '/data/revserse_cine64_12slice_mask.mat' ,
+        "lemniscate": "DataPath for lemniscate", #HOME+ '/datasets/lemniscate_example_series.mat' ,
+        "cine_slice_img": "DataPath for cine",#HOME+ '/datasets/revserse_cine64_12slice.mat' ,
+        "reversed_cine_slice_mask": "DataPath for cine mask",#HOME+ '/datasets/revserse_cine64_12slice_mask.mat' ,
     }
 
     
     if "cine_slice_img_reversed" in dataset_name:
-        args.train_dense = dataset_config['reversed_cine_slice_img']
-        args.test_dense = dataset_config['reversed_cine_slice_img']
-        args.pathmask = dataset_config['reversed_cine_slice_mask']
-    elif "cine_slice_img" in dataset_name:
         args.train_dense = dataset_config['cine_slice_img']
         args.test_dense = dataset_config['cine_slice_img']
-        args.pathmask = dataset_config['cine_slice_mask']
+        args.pathmask = dataset_config['reversed_cine_slice_mask']
     elif "lemniscate" in dataset_name:
-        args.train_dense = dataset_config['lemniscate1200']
-        args.test_dense = dataset_config['lemniscate1200']
+        args.train_dense = dataset_config['lemniscate']
+        args.test_dense = dataset_config['lemniscate']
         args.pathmask = None
    
     
 
     args.exp = dataset_name + str(args.img_size)
-    snapshot_path =  HOME+"/data/project_Dec12/model/{}/".format(args.exp)    
+    #set the dirctory to save the model
+    snapshot_path =  HOME+"/TLRN/models/{}/".format(args.exp)    
     snapshot_path += args.module_name
     snapshot_path = snapshot_path + '_' + str(args.loss_type) if args.loss_type == 'NCC' else snapshot_path
     snapshot_path = snapshot_path + '_Tsteps' + str(args.num_steps)
@@ -150,13 +141,19 @@ if __name__ == "__main__":
 
     net = netdic[module_name]
     if args.mode =="train":
+        #start to train
         trainer_dic[module_name](args, net, snapshot_path)
 
     elif args.mode =="test":
-        # save_mode_path = ""
-        # net.load_state_dict(torch.load(save_mode_path,map_location='cpu')['register'])
-        # print("~~~~~~load model finished:~~~~~~~~~~~~~  {}\n\n".format(save_mode_path))
+        #start to test
+        save_mode_path_TLRN = "./models/registration_TLRN.pth"
+        save_mode_path_VM = "./models/registration_voxelmorph.pth"  
+        if args.resmode == "voxelmorph":
+            net.load_state_dict(torch.load(save_mode_path_VM,map_location='cpu')['registration'])
+        elif args.resmode == "TLRN":
+            net.load_state_dict(torch.load(save_mode_path_TLRN,map_location='cpu')['registration'])
     
+        # set the dircetory to save the visualization results
         args.visdir = f"{args.test_type}/{args.test_img_size}"
         args.visjpg = snapshot_path+"/view_res/"+args.visdir
         if not os.path.exists(args.visjpg):

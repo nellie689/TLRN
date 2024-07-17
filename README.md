@@ -1,6 +1,6 @@
 ************************** TLRN ************************** 
 
-TLRN: Temporal Latent Residual Networks For Large Deformation Image Registration (https://arxiv.org/pdf/coming...soon.pdf).
+TLRN: Temporal Latent Residual Networks For Large Deformation Image Registration (http://arxiv.org/abs/2407.11219).
 
 
 ************************** Disclaimer ************************** 

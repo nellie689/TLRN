@@ -113,7 +113,7 @@ class Net2DResNet(nn.Module):
         self.test_img_size = args.test_img_size
 
         
-        self.id = torch.from_numpy(lm.identity((1,2,args.img_size,args.img_size))).cuda()
+        # self.id = torch.from_numpy(lm.identity((1,2,args.img_size,args.img_size))).cuda()
 
 
         # ensure correct dimensionality

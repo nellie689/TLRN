@@ -2,7 +2,7 @@ import torch
 import numpy as np
 import torch.nn as nn
 from utils import Svf
-import lagomorph as lm
+# import lagomorph as lm
 
 
 class ConvBlock(nn.Module):

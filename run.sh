@@ -23,10 +23,6 @@ max_epochs=20000
 #reslevel: the number of the resnet blocks in the model
 
 #Here are four examples you can run
-#example 1
-resmode='TLRN';dataset="lemniscate";series_len=12;reslevel=1;device=0
-#example 2
-# resmode='voxelmorph';dataset="lemniscate";series_len=12;reslevel=1;device=0
 #example 3
 # resmode='TLRN';dataset="cine_slice_img";series_len=7;reslevel=3;device=0
 #example 4

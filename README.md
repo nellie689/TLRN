@@ -35,13 +35,15 @@ Below is a *QuickStart* guide on how to use TLRN for network training and testin
 
 If you want to train your own model, choose the loss type and run the corresponding script:
 
-bash train_with_mse.sh  (trains with MSE loss, regularity weights svf_reg_w=0.03, svf_reg_w2=0.03)
+**bash train_with_mse.sh**  (trains with MSE loss, regularity weights svf_reg_w=0.03, svf_reg_w2=0.03)
 
-bash train_with_ncc.sh  (trains with NCC loss, regularity weights svf_reg_w=0.5, svf_reg_w2=0.5)
+Or
+
+**bash train_with_ncc.sh**  (trains with NCC loss, regularity weights svf_reg_w=0.5, svf_reg_w2=0.5)
 
 If you want to test the model, please run:
 
-bash run.sh, with the parameter "mode" set as "test" in the bash script.
+**bash run.sh**, with the parameter "mode" set as "test" in the bash script.
 
 Required Input Data: time-series image.
 

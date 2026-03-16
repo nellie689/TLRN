@@ -20,7 +20,7 @@ parser.add_argument('--seed', type=int, default=1234, help='random seed')
 parser.add_argument('--n_gpu', type=int, default=1, help='total gpu')
 
 """ ~~~~~~~~~    about training phase ~~~~~~~~~~~~"""
-parser.add_argument('--loss_type', type=str, default='MSE', help='experiment_name')
+parser.add_argument('--loss_type', type=str, default='MSE', help='Loss type for similarity: MSE or NCC')
 parser.add_argument('--max_epochs', type=int, default=6000, help='maximum epoch number to train')
 parser.add_argument('--batch_size', type=int, default=32, help='batch_size per gpu')
 parser.add_argument('--regis_lr', type=float,  default=0.0005, help='lr of unet')
@@ -85,7 +85,10 @@ if __name__ == "__main__":
     module_name = args.module_name
 
 
-    args.nb_features=[[16, 32, 32], [32, 32, 32, 32, 16, 16]]
+    # args.nb_features=[[16, 32, 32], [32, 32, 32, 32, 16, 16]]
+    ch_sz = 2
+    args.nb_features=[[16*ch_sz, 32*ch_sz, 32*ch_sz], [32*ch_sz, 32*ch_sz, 32*ch_sz, 32*ch_sz, 16*ch_sz, 16]]
+
 
     #DATA PATH
     dataset_config = {
